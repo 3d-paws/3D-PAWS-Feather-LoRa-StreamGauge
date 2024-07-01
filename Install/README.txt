@@ -2,7 +2,7 @@ Install Instructions
 
 Exit Arduino Serial Monitor if it is running
 
-Push the rest button twice quickly on the Feather board to set firmware download mode.
+Push the reset button twice quickly on the Feather board to set firmware download mode.
    The red LED by the battery connector will pulse quickly.
    COM port will change when in firmware download mode. 
 
