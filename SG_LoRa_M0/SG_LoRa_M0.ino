@@ -1,5 +1,5 @@
 #define COPYRIGHT "Copyright [2024] [University Corporation for Atmospheric Research]"
-#define VERSION_INFO "SGLoRaM0-240626"
+#define VERSION_INFO "SGLoRaM0-240719"
 
 /*
  *======================================================================================================================
@@ -19,7 +19,7 @@
  *                          Opdated code to match other devices
  *                          Added support for 5m and 10m distance sensors and reworked the scaling factor calculation
  *                          Added Copyright
- *                          
+ *           2024-07-19 RJB Include renamed to SG.h                    
  * Time Format: 2022:09:19:19:10:00  YYYY:MM:DD:HR:MN:SS
  *                    
  * SEE https://learn.adafruit.com/adafruit-feather-m0-radio-with-lora-radio-module
@@ -165,7 +165,7 @@ bool SD_exists = false;     // Set to true if SD card found at boot
 #include "LoRa.h"                 // LoRa
 #include "Sensors.h"              // I2C Based Sensors
 #include "SDC.h"                  // SD Card
-#include "Stream.h"               // Stream Gauge
+#include "SG.h"                   // Stream/Snow Gauge
 #include "OBS.h"                  // Do Observation Processing
 #include "SM.h"                   // Station Monitor
 
@@ -179,8 +179,6 @@ int seconds_to_next_obs() {
   now = rtc.now(); //get the current date-time
   return (900 - (now.unixtime() % 900)); // 900 = 60s * 15m,  The mod operation gives us seconds passed in this 15m window
 }
-
-
 
 /*
  * =======================================================================================================================
@@ -293,7 +291,7 @@ void loop()
     else {
       float batt = vbat_get();
       sprintf (Buffer32Bytes, "SG:%3d %d.%02d %04X", 
-        (int) analogRead(STREAMGAUGE)/4,    // Pins are 12bit resolution (0-4095), values need to be (0-1023)
+        (int) analogRead(SGAUGE_PIN)/4,    // Pins are 12bit resolution (0-4095), values need to be (0-1023)
         (int)batt, (int)(batt*100)%100,
         SystemStatusBits); 
       Output (Buffer32Bytes);

@@ -138,10 +138,10 @@ void StationMonitor() {
   // =================================================================
   float sg;
   if (cf_ds_type) {  // 0 = 5m, 1 = 10m
-    sg = analogRead(STREAMGAUGE)*5;
+    sg = analogRead(SGAUGE_PIN)*5;
   }
   else {
-    sg = analogRead(STREAMGAUGE)*10;
+    sg = analogRead(SGAUGE_PIN)*10;
   }
   sprintf (Buffer32Bytes, "SG:%d.%02d %d.%02d %04X", 
     (int)sg, (int)(sg*100)%100,

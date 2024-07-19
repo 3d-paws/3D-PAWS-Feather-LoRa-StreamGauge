@@ -29,7 +29,7 @@ void OBS_Do (bool log_obs) {
   Output ("OBS_Do()");
  
   // Take multiple readings and return the median, 15s spent reading stream guage
-  float SG_Median = stream_gauge_median();
+  float SG_Median = s_gauge_median();
 
   // Adafruit I2C Sensors
   if (BMX_1_exists) {

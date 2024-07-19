@@ -1,6 +1,6 @@
 /*
  * ======================================================================================================================
- *  Stream.h - Stream Gauge
+ *  SG.h - Stream and Snow Distance Functions
  * ======================================================================================================================
  */
 
@@ -20,24 +20,24 @@
  *  Stream Gauge
  * =======================================================================================================================
  */
-#define STREAMGAUGE     A3
-#define SG_BUCKETS      60
+#define SGAUGE_PIN     A3
+#define SG_BUCKETS     60
 
 unsigned int sg_bucket = 0;
 unsigned int sg_buckets[SG_BUCKETS];
 
 /* 
  *=======================================================================================================================
- * stream_gauge_median()
+ * s_gauge_median()
  *=======================================================================================================================
  */
-float stream_gauge_median() {
+float s_gauge_median() {
   int i;
 
   for (i=0; i<SG_BUCKETS; i++) {
     // delay(500);
     delay(250);
-    sg_buckets[i] = (int) analogRead(STREAMGAUGE);
+    sg_buckets[i] = (int) analogRead(SGAUGE_PIN);
     // sprintf (Buffer32Bytes, "SG[%02d]:%d", i, sg_buckets[i]);
     // OutputNS (Buffer32Bytes);
   }
