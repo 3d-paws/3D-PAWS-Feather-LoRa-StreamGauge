@@ -20,6 +20,9 @@
  *                          Added support for 5m and 10m distance sensors and reworked the scaling factor calculation
  *                          Added Copyright
  *           2024-07-19 RJB Include renamed to SG.h                    
+ *           2024-11-05 RJB Discovered BMP390 first pressure reading is bad. Added read pressure to bmx_initialize()
+ *                          Bug fixes for 2nd BMP sensor in bmx_initialize() using first sensor data structure
+ *                          
  * Time Format: 2022:09:19:19:10:00  YYYY:MM:DD:HR:MN:SS
  *                    
  * SEE https://learn.adafruit.com/adafruit-feather-m0-radio-with-lora-radio-module
